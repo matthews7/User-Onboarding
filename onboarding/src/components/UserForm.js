@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {withFormik, Form, Field} from "formik"
 import * as Yup from "yup";
-// import axios from "axios";
+import axios from "axios";
 // import NewUser from "./NewUser"
 
 
@@ -83,7 +83,16 @@ const FormikUserForm = withFormik({
         password: Yup.string().required("Create a password to sign up"),
         terms: Yup.boolean().oneOf([true], "Must Accept Terms and Condtions")
 
-    })
+    }),
+
+    handleSubmit(values, formikBag){
+        console.log("submitting!", values);
+        axios.post("https://reqres.in/api/users/", values)
+        .then(res=> {
+            console.log('succes', res);
+        })
+        .catch(err => console.log(err.response));
+    }
 
 })(UserForm);
 
