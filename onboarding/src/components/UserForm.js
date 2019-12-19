@@ -1,7 +1,7 @@
 import React from "react";
 import {withFormik, Form, Field} from "formik"
 
-import NewUser from "./NewUser"
+// import NewUser from "./NewUser"
 
 
 
@@ -50,4 +50,17 @@ function UserForm () {
     )
 };
 
-export default UserForm;
+const FormikUserForm = withFormik({
+    mapPropsToValues({name, email, password, terms}){
+
+        return {
+            name: name || "",
+            email: email || "",
+            password: password || "",
+            terms: terms || ""
+        }
+    }
+
+})(UserForm);
+
+export default FormikUserForm;
