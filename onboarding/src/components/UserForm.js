@@ -20,7 +20,7 @@ function UserForm ({values, touched, errors, status }) {
     return(
         <div className="user-form">
             <Form>
-                <label> Name:
+                <label className="label"> Name:
                     <Field
                     id="name"
                     type="text"
@@ -31,8 +31,11 @@ function UserForm ({values, touched, errors, status }) {
                         <p>{errors.name}</p>
                     )}
                 </label>
+                <br className="label"/>
+               
+                
 
-                <label> Email:
+                <label className="label"> Email:
                     <Field
                     id="email"
                     type="text"
@@ -44,6 +47,8 @@ function UserForm ({values, touched, errors, status }) {
                         <p>{errors.email}</p>
                     )}
                 </label>
+                <br/>
+                
                 <label> Password:
                     <Field
                     id="password"
@@ -56,7 +61,9 @@ function UserForm ({values, touched, errors, status }) {
                         <p>{errors.password}</p>
                     )}
                 </label>
-                <label> Terms of Service
+                <br/>
+                
+                <label className="label"> Terms of Service
                     <Field
                     type="checkbox"
                     name="terms"
@@ -66,6 +73,8 @@ function UserForm ({values, touched, errors, status }) {
                         <p>{errors.terms}</p>
                     )}
                 </label>
+                <br/>
+                
                 <button type="submit">Submit</button>
             </Form>
             <NewUser users={users}/>

@@ -9,7 +9,7 @@ function NewUser ({users}){
         <div className="user-card">
             {users.map(user => {
                 return(
-                <ul key={user.id}>
+                <ul  key={user.id}>
                     <li>Name:{user.name} </li>
                     <li>Email:{user.email} </li>
                     <li>Password:{user.password} </li>
