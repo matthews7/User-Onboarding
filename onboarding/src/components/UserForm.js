@@ -17,7 +17,7 @@ function UserForm () {
                     id="name"
                     type="text"
                     name="name"
-                    placeholder="Enter Name"
+                    placeholder="Enter First and Last Name"
                     />
                 </label>
 
