@@ -93,13 +93,13 @@ const FormikUserForm = withFormik({
 
     }),
 
-    handleSubmit(values, {setStatus}){
+    handleSubmit(values, {setStatus, resetForm}){
         console.log("submitting!", values);
         axios.post("https://reqres.in/api/users/", values)
         .then(res=> {
             console.log('succes', res);
             setStatus(res.data);
-            
+            resetForm();
         })
         .catch(err => console.log(err.response));
     }

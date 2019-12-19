@@ -1,13 +1,12 @@
 import React from "react";
 
 
-
 function NewUser ({users}){
 
 
 
     return(
-        <div>
+        <div className="user-card">
             {users.map(user => {
                 return(
                 <ul key={user.id}>
