@@ -2,13 +2,20 @@ import React, {useState, useEffect} from "react";
 import {withFormik, Form, Field} from "formik"
 import * as Yup from "yup";
 import axios from "axios";
-// import NewUser from "./NewUser"
+import NewUser from "./NewUser"
 
 
 
-function UserForm ({values, touched, errors }) {
+function UserForm ({values, touched, errors, status }) {
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+    console.log('status has change!', status)
+
+    status && setUsers(user => [...user, status])
 
 
+    }, [status]); 
 
     return(
         <div className="user-form">
@@ -61,7 +68,8 @@ function UserForm ({values, touched, errors }) {
                 </label>
                 <button type="submit">Submit</button>
             </Form>
-        
+            <NewUser users={users}/>
+            
         </div>
     )
 };
@@ -85,11 +93,13 @@ const FormikUserForm = withFormik({
 
     }),
 
-    handleSubmit(values, formikBag){
+    handleSubmit(values, {setStatus}){
         console.log("submitting!", values);
         axios.post("https://reqres.in/api/users/", values)
         .then(res=> {
             console.log('succes', res);
+            setStatus(res.data);
+            
         })
         .catch(err => console.log(err.response));
     }
